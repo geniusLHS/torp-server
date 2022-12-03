@@ -24,7 +24,8 @@ let publicKeys = {}; // Example : { foobar: { Alice: 'asd', Bob: 'asd' } }
 let userNumber = {}; // Example : { foobar: 1}}
 
 io.on('connection', (socket) => {
-  console.log(`User connected ${socket.id}`);
+  let __createdtime__ = new Date();
+  console.log(`${__createdtime__} | User connected ${socket.id}`);
 
   socket.on('new_room', (data) => {
     let __createdtime__ = new Date();
