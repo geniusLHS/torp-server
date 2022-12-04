@@ -22,10 +22,13 @@ let chatRoom = '';
 let allUsers = [];
 let publicKeys = {}; // Example : { foobar: { Alice: 'asd', Bob: 'asd' } }
 let userNumber = {}; // Example : { foobar: 1}}
+let userCount = 0;
 
 io.on('connection', (socket) => {
+  userCount += 1;
+
   let __createdtime__ = new Date();
-  console.log(`${__createdtime__} | User connected ${socket.id}`);
+  console.log(`${__createdtime__.toLocaleString()} | #${userCount} User connected ${socket.id}`);
 
   socket.on('new_room', (data) => {
     let __createdtime__ = new Date();
@@ -94,6 +97,9 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
+    let __createdtime__ = new Date();
+    console.log(`${__createdtime__.toLocaleString()} | User disconnected ${socket.id}`);
+
     const user = allUsers.find((user) => user.id == socket.id);
     if (user?.room) {
       chatRoom = user?.room;
