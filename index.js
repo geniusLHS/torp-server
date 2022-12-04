@@ -23,6 +23,7 @@ let allUsers = [];
 let publicKeys = {}; // Example : { foobar: { Alice: 'asd', Bob: 'asd' } }
 let userNumber = {}; // Example : { foobar: 1}}
 let userCount = 0;
+let matchCount = 0;
 
 io.on('connection', (socket) => {
   userCount += 1;
@@ -68,6 +69,10 @@ io.on('connection', (socket) => {
       if (publicKeys[room]) delete publicKeys[room];
       if (userNumber[room]) delete userNumber[room];
     } else {
+      matchCount += 1;
+      let __createdtime__ = new Date();
+      console.log(`${__createdtime__.toLocaleString()} | #${matchCount} Match occured`);
+
       userNumber[room] += 1;
 
       socket.join(room);
