@@ -2,10 +2,10 @@
   "name": "torp-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "torp-server-index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon torp-server-index.js"
   },
   "keywords": [],
   "author": "",
